@@ -1,0 +1,6 @@
+{
+  "appId": "com.ridho.music",
+  "appName": "Ridho Music",
+  "webDir": "www",
+  "bundledWebRuntime": false
+}

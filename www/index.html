@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111316">
+  <meta name="description" content="Ridho Music — pemutar musik lokal yang sederhana dan elegan.">
+  <title>Ridho Music</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Ridho Music beranda">
+        <span class="brand-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M18 3v18.2a5 5 0 1 1-3-4.6V8.2l13-2.8v14.2a5 5 0 1 1-3-4.6V3.7L18 5.2z"/></svg></span>
+        <span><b>ridho<span>music</span></b><small>YOUR SOUND, YOUR SPACE</small></span>
+      </a>
+      <div class="header-actions">
+        <span class="local-badge"><i></i> MUSIK LOKAL</span>
+        <button class="add-button" id="addMusic" type="button"><span>＋</span><span class="add-label">Tambah lagu</span></button>
+        <input id="filePicker" type="file" accept="audio/*,.mp3" multiple hidden>
+      </div>
+    </header>
+
+    <main id="top" class="layout">
+      <section class="player-panel" aria-label="Pemutar musik">
+        <div class="section-heading"><div><span class="eyebrow">NOW PLAYING</span><h1>Ruang dengar</h1></div><span class="format-pill">MP3 <span>·</span> AUDIO</span></div>
+
+        <div class="now-playing-card">
+          <div class="cover-stage">
+            <div class="cover-art" id="coverArt" aria-label="Cover album Ridho Music" role="img">
+              <div class="cover-grain"></div><div class="cover-orbit orbit-one"></div><div class="cover-orbit orbit-two"></div>
+              <div class="cover-disc"><div class="disc-label"><span class="disc-mark">R</span><span class="disc-hole"></span></div></div>
+              <div class="cover-type"><span class="cover-kicker">RIDHO MUSIC · VOL. 01</span><strong id="coverTitle">Temukan<br>irama baru.</strong><span class="cover-line"></span><small>PERSONAL LISTENING SESSION</small></div>
+              <span class="cover-index">01 / 07</span>
+            </div>
+            <div class="cover-glow"></div>
+          </div>
+          <div class="track-info">
+            <div class="track-copy"><span class="eyebrow" id="trackSource">PILIH LAGU DARI PERANGKAT</span><h2 id="trackTitle">Belum ada lagu</h2><p id="trackArtist">Tambahkan MP3 untuk mulai mendengarkan</p></div>
+            <button class="favorite-button" id="favoriteBtn" type="button" aria-label="Tandai favorit" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg></button>
+          </div>
+
+          <div class="timeline">
+            <input id="seekBar" class="range seek" type="range" min="0" max="1000" value="0" aria-label="Posisi lagu" disabled>
+            <div class="time-row"><span id="currentTime">0:00</span><span id="duration">0:00</span></div>
+          </div>
+          <div class="transport">
+            <button class="mode-button" id="shuffleBtn" type="button" aria-label="Acak mati" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="m18 14 4 4-4 4M18 2l4 4-4 4M2 18h2.5a5 5 0 0 0 4-2l7-8a5 5 0 0 1 4-2H22M2 6h2.5a5 5 0 0 1 4 2l1 1m4 6 1 1a5 5 0 0 0 4 2H22"/></svg></button>
+            <button class="skip-button" id="previousBtn" type="button" aria-label="Lagu sebelumnya"><svg viewBox="0 0 24 24"><path d="M6 5v14M19 6v12L8 12z"/></svg></button>
+            <button class="play-button" id="playBtn" type="button" aria-label="Putar"><svg class="play-icon" viewBox="0 0 24 24"><path d="m8 5 12 7-12 7z"/></svg><svg class="pause-icon" viewBox="0 0 24 24"><path d="M7 5h3v14H7zm7 0h3v14h-3z"/></svg></button>
+            <button class="skip-button" id="nextBtn" type="button" aria-label="Lagu berikutnya"><svg viewBox="0 0 24 24"><path d="M18 5v14M5 6v12l11-6z"/></svg></button>
+            <button class="mode-button repeat-button" id="repeatBtn" type="button" aria-label="Ulang mati" aria-pressed="false"><svg viewBox="0 0 24 24"><path d="m17 2 4 4-4 4M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4m14-1v2a3 3 0 0 1-3 3H3"/></svg><span class="repeat-one">1</span></button>
+          </div>
+          <div class="volume-row"><svg class="volume-icon" viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4zM15.5 8.5a5 5 0 0 1 0 7m3-10a9 9 0 0 1 0 13"/></svg><input id="volumeBar" class="range volume" type="range" min="0" max="100" value="78" aria-label="Volume"><span id="volumeLabel">78</span></div>
+          <p class="player-message" id="playerMessage" aria-live="polite">Pilih satu atau beberapa file audio dari HP kamu.</p>
+        </div>
+      </section>
+
+      <aside class="playlist-panel" aria-label="Playlist">
+        <div class="playlist-heading"><div><span class="eyebrow">YOUR COLLECTION</span><h2>Playlist <span class="playlist-count" id="playlistCount">0</span></h2></div><button class="text-button" id="clearPlaylist" type="button" disabled>Bersihkan</button></div>
+        <div class="playlist-tools"><div class="search-box"><svg viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"/><path d="m16 16 5 5"/></svg><input id="searchInput" type="search" placeholder="Cari di playlist" aria-label="Cari lagu"></div><button id="sortBtn" class="sort-button" type="button" aria-label="Urutkan playlist" title="Urutkan A–Z"><svg viewBox="0 0 24 24"><path d="M4 6h11M4 12h8M4 18h5m8 3V3m0 0-4 4m4-4 4 4"/></svg></button></div>
+        <div class="playlist-meta" id="playlistMeta"><span>JUDUL LAGU</span><span>WAKTU</span></div>
+        <div class="playlist-list" id="playlistList" role="list" aria-live="polite"></div>
+        <div class="empty-state" id="emptyState"><div class="empty-art"><span>♫</span><i></i><b></b></div><h3>Playlist masih kosong</h3><p>Tambahkan file MP3 dari penyimpanan HP untuk membuat koleksimu.</p><button id="emptyAdd" type="button">Pilih file audio <span>↗</span></button></div>
+        <div class="playlist-footer"><span><i class="pulse-dot"></i> SIAP DIPUTAR OFFLINE</span><span id="totalTime">00:00 TOTAL</span></div>
+      </aside>
+    </main>
+    <footer class="footer"><span>RIDHO MUSIC <b>·</b> DIBUAT UNTUK MENIKMATI MUSIK</span><span>FILE TETAP TERSIMPAN DI PERANGKATMU</span></footer>
+    <audio id="audio" preload="metadata"></audio>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
